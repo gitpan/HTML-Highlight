@@ -1,17 +1,18 @@
 
-$Id: README,v 1.1.1.1 2001/06/19 19:30:50 trip Exp $
 
- HTML::Highlight - A module to highlight words or patterns in HTML documents
+HTML::Highlight - A module to highlight words or patterns in HTML documents
 
-This module provides Google-style highlighting of words or patterns in HTML
-documents. This feature is typically used to highlight search results.
+This module provides colour Google-style highlighting of words or
+patterns in HTML documents. This feature is typically used to highlight
+search results. Each specified pattern or word is highlighted using
+a different color.
  
 This module was originaly created to work together with fulltext
-indexing module DBIx::TextIndex.
+indexing module DBIx::TextIndex, but it can be used independently.
 
-Need for a highlighter that takes wildcard matches and HTML tags into 
-account and supports czech language (or other Slavic languages) was
-the motivation to create this module.
+Need for a highlighter that supports wildcards and phrases and takes
+HTML tags into account was my motivation to create the module.
+
  
     INSTALLATION:
     

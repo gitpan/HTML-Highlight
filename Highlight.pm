@@ -1,6 +1,4 @@
 
-# $Id: Highlight.pm,v 1.39 2001/06/22 22:27:02 trip Exp $
-
 package HTML::Highlight;
 
 use locale;
@@ -10,7 +8,7 @@ use Carp;
 
 BEGIN {
 	use vars qw ($VERSION @ISA);
-	$VERSION     = 0.10;
+	$VERSION     = 0.20;
 	@ISA         = ();
 }
 
@@ -249,7 +247,8 @@ the motivation to create this module.
 This module provides Google-like highlighting of words or patterns in HTML
 documents. This feature is typically used to highlight search results.
 
-=item new
+
+=item The construcutor:
 
 	my $hl = new HTML::Highlight (
 		words => [],
@@ -262,6 +261,7 @@ documents. This feature is typically used to highlight search results.
 This is a constructor of the highlighter object. It takes an array of 
 even number of parameters.
 
+
 The B<words> parameter is a reference to an array of words to highlight.
 
 The B<wildcards> parameter is a reference to an array of wildcards, that
@@ -269,18 +269,21 @@ are applied to corresponding words in the B<words> array.
 
 A wildcard can be either undef or one of '%' or '*'.
 
-		B<the "%" character> means "match any characters"
+B<The "%" character> means "match any characters":
 
-	  		"%" applied to 'car' ==> matches "car", "cars", "careful", ...
-	  	
-	  	B<the "*" character> means "match also plural form of the word"	
-	  	
-		  	"*" applied to 'car' ==> matches only "car" or "cars"
+	"%" applied to 'car' ==> matches "car", "cars", "careful", ...
 
-		B<undefined wildcard> means "match exactly the corresponding word"
+
+B<The "*" character> means "match also plural form of the word":
+
+	"*" applied to 'car' ==> matches only "car" or "cars"
+
+
+B<An undefined wildcard> means "match exactly the corresponding word":
+
+	undefined wildcard applied to 'car' ==> matches only "car"
+
 	
-			undefined wildcard applied to 'car' ==> matches only "car"
-		
 		
 The B<colors> parameter is a reference to an array of CSS color
 identificators, that are used to highlight the corresponding words in
@@ -316,12 +319,13 @@ the words are highlighted.
 =item preview_context
 
 	my $sections = $hl->preview_context($document, $num);
-	
-This method takes two parameters. The first one is the
-document you want to scan for the words that were passed to the constructor
-of the highlighter object. The second parameter is an 
-optional integer that specifies maximum number of characters in each
-of the context sections (see below). This parameter defaults to 80
+
+
+This method takes two parameters. The first one is the document you
+want to scan for the words that were passed to the constructor of the
+highlighter object. The second parameter is an optional integer
+that specifies maximum number of characters in each of the context
+sections (see below). This parameter defaults to 80
 characters if it's not specified. Minimum allowed value of this 
 parameter is 60.
 
